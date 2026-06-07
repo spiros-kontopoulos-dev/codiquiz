@@ -1,0 +1,18 @@
+# Local files
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+
+# Never commit private exports or backup files
+*.sql
+*.sql.gz
+*.dump
+*.backup
+*.key
+*.pem
+
+# Local scratch
+/tmp/
+/.scratch/
