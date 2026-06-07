@@ -1,0 +1,62 @@
+# Sanitized Docker Compose topology example for public portfolio review.
+# This is not the private production compose file and is not intended to run as-is.
+
+services:
+  frontend:
+    image: codiquiz/frontend:example
+    depends_on:
+      - quiz-api
+
+  quiz-api:
+    image: codiquiz/quiz-api:example
+    environment:
+      CODIQUIZ_ENV: production
+      AI_GENERATION_PROVIDER: mock
+      DATABASE_URL: postgresql://codiquiz_user:${POSTGRES_PASSWORD}@postgres:5432/codiquiz_db
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+      - question-service
+
+  question-service:
+    image: codiquiz/question-service:example
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      REDIS_URL: redis://redis:6379/1
+
+  quiz-worker:
+    image: codiquiz/quiz-api:example
+    command: celery -A app.async_worker.celery_app.celery_app worker --loglevel=info
+    depends_on:
+      - quiz-api
+      - redis
+
+  quiz-beat:
+    image: codiquiz/quiz-api:example
+    command: celery -A app.async_worker.celery_app.celery_app beat --loglevel=info
+    depends_on:
+      - redis
+
+  question-worker:
+    image: codiquiz/question-service:example
+    command: celery -A app.celery_app.celery_app worker --loglevel=info
+    depends_on:
+      - question-service
+      - redis
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: codiquiz_db
+      POSTGRES_USER: codiquiz_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  redis:
+    image: redis:7-alpine
+
+  caddy:
+    image: caddy:2-alpine
+    depends_on:
+      - frontend
+      - quiz-api

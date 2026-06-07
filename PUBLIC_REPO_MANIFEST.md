@@ -1,6 +1,6 @@
 # Public Documentation Repository Manifest
 
-This repository contains the public documentation mirror for Codiquiz.
+This repository contains the public documentation, architecture, diagrams, demo flow, and selected sanitized code examples for Codiquiz.
 
 ## Included
 
@@ -13,11 +13,12 @@ This repository contains the public documentation mirror for Codiquiz.
 - Recruiter demo presentation flow.
 - Mermaid architecture diagrams.
 - Public-safe deployment model/checklists.
+- Selected sanitized code excerpts from backend, frontend, tests, and infrastructure.
 
 ## Not included
 
-- Application source code.
-- Private environment files.
+- Complete application source code.
+- Private environment files, real production compose files, and secrets.
 - Database backups.
 - Secrets or credentials.
 - Private server-specific operational details that are not needed for portfolio review.
