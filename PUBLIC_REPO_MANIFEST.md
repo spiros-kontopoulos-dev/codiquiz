@@ -1,24 +1,22 @@
-# Public Documentation Repository Manifest
+# Public Repository Manifest
 
-This repository contains the public documentation, architecture, diagrams, demo flow, and selected sanitized code examples for Codiquiz.
+This repository is the public portfolio and documentation home for Codiquiz.
 
-## Included
+It includes:
 
-- Product overview.
-- Architecture documentation.
-- Backend Quality Engine documentation.
+- Product and architecture documentation.
 - Backend Intelligence Layer documentation.
-- Blueprint, suitability, taxonomy, async automation, and roadmap docs.
-- Preview/demo docs.
-- Recruiter demo presentation flow.
+- Deployment and preview/demo runbooks.
+- Recruiter/demo presentation flow.
 - Mermaid architecture diagrams.
-- Public-safe deployment model/checklists.
-- Selected sanitized code excerpts from backend, frontend, tests, and infrastructure.
+- Selected sanitized code excerpts.
 
-## Not included
+It does not include:
 
-- Complete application source code.
-- Private environment files, real production compose files, and secrets.
-- Database backups.
-- Secrets or credentials.
-- Private server-specific operational details that are not needed for portfolio review.
+- The full private application source code.
+- Real secrets or `.env` files.
+- Production database dumps or backups.
+- Proprietary operational credentials.
+- A runnable copy of the complete platform.
+
+The complete Codiquiz source remains private because the platform is actively developed and published online.

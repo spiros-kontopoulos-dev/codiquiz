@@ -4,12 +4,18 @@ This folder contains selected sanitized excerpts from the private Codiquiz codeb
 
 The goal is to show implementation style and system design without publishing the complete application source. These examples are intentionally partial and are not expected to run as a standalone project.
 
+For a connected explanation of how the excerpts fit together, start here:
+
+- [Code Walkthrough](CODE_WALKTHROUGH.md)
+
 ## What is included
 
 ### Backend / FastAPI
 
 - `backend/fastapi/public_traffic_router_excerpt.py` — anonymous public visitor/session tracking, source normalization, privacy-aware IP hashing, and admin traffic summaries.
 - `backend/fastapi/security_readiness_excerpt.py` — deployment-readiness checks for CORS, cookies, provider defaults, bootstrap owner cleanup, test-lab exposure, and visitor privacy.
+- `backend/fastapi/blueprint_coverage_router_excerpt.py` — API endpoints for coverage rows, default targets, and ranked generation candidates.
+- `backend/fastapi/ai_generation_router_workflow_excerpt.py` — plan preview, batch creation, normal execution, and Batch API preparation lifecycle.
 
 ### Backend / Pydantic contracts
 
@@ -39,6 +45,11 @@ The goal is to show implementation style and system design without publishing th
 
 - `backend/async-workers/batch_lifecycle_worker_excerpt.py` — Celery task wrapper for cautious Batch API lifecycle automation and task-run visibility.
 
+### Admin/demo security
+
+- `backend/security/demo_viewer_permissions_excerpt.py` — backend role checks and demo-viewer write restrictions.
+- `frontend/react/protected_admin_route_excerpt.tsx` — admin route protection and role-aware UI entry point.
+
 ### Data model / taxonomy seeds
 
 - `backend/models/sqlalchemy_intelligence_models_excerpt.py` — SQLAlchemy model excerpts for concept importance, suitability, Blueprint rules, execution jobs, and AI drafts.
@@ -48,11 +59,15 @@ The goal is to show implementation style and system design without publishing th
 ### Frontend / React + TypeScript
 
 - `frontend/react/public_visit_tracker.tsx` — public visit/session source tracking that never blocks navigation.
+- `frontend/react/admin_public_traffic_page_excerpt.tsx` — admin visitor analytics page excerpt.
 - `frontend/react/blueprint_api_client_excerpt.ts` — typed Blueprint coverage/candidate client calls.
+- `frontend/react/admin_ai_generation_blueprint_flow_excerpt.tsx` — AI Generation Create page logic for Blueprint candidate metadata and plan-preview conversion.
+- `frontend/react/ai_generation_api_client_excerpt.ts` — typed AI generation client contracts and request helpers.
 
 ### Tests and infrastructure
 
 - `tests/playwright/playwright_config_excerpt.ts` — representative Playwright config.
+- `tests/playwright/preview_smoke_tests_example.spec.ts` — public-safe smoke-test example for the preview/demo flow.
 - `infrastructure/docker-compose.example.yml` — sanitized service topology example.
 - `infrastructure/env.example` — safe example environment variables without secrets.
 
