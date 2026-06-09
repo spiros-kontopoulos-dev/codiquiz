@@ -6,18 +6,12 @@ This walkthrough is the repeatable path for showing the Codiquiz preview environ
 
 Use the preview environment only:
 
-```text
-https://preview.codiquiz.com
-https://admin.preview.codiquiz.com/login
-```
+- Public preview: [preview.codiquiz.com](https://preview.codiquiz.com)
+- Admin demo access: [admin.preview.codiquiz.com/admin/demo-access](https://admin.preview.codiquiz.com/admin/demo-access)
 
 ## 1. Public product overview
 
-Open:
-
-```text
-https://preview.codiquiz.com
-```
+Open: [preview.codiquiz.com](https://preview.codiquiz.com)
 
 Explain:
 
@@ -46,16 +40,12 @@ The current preview focuses on the public practice experience, taxonomy depth, a
 
 ## 2. Admin separation
 
-Open:
-
-```text
-https://admin.preview.codiquiz.com/login
-```
+Open: [admin.preview.codiquiz.com/admin/demo-access](https://admin.preview.codiquiz.com/admin/demo-access)
 
 Explain:
 
 ```text
-The admin app is separated onto its own preview admin subdomain. Demo access is restricted, and owner-only actions remain protected.
+The admin app is separated onto its own preview admin subdomain. The demo access page provides a controlled entry point for recruiter/visitor previews, while owner-only actions remain protected.
 ```
 
 For public/recruiter demos, prefer the demo viewer account unless you intentionally need owner-only actions.

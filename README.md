@@ -12,15 +12,15 @@ This is the public documentation, architecture, and code-examples repository for
 
 ## Live early alpha preview
 
-- Public preview: `https://preview.codiquiz.com`
-- Admin preview: `https://admin.preview.codiquiz.com/login`
+- Public preview: [preview.codiquiz.com](https://preview.codiquiz.com)
+- Admin demo access: [admin.preview.codiquiz.com/admin/demo-access](https://admin.preview.codiquiz.com/admin/demo-access)
 
-The preview environment is an isolated early-alpha deployment used for demonstration, testing, and portfolio review. It has its own database, Redis instance, secrets, OpenAI preview key, backup workflow, and restricted demo/admin access.
+The preview environment is an early-alpha deployment used for demonstration, testing, and portfolio review. Visitors can explore the public practice experience, while the admin demo access page provides a controlled way to preview selected admin workflows.
 
 ## Demo documentation
 
-- Public preview: `https://preview.codiquiz.com`
-- Admin preview: `https://admin.preview.codiquiz.com/login`
+- Public preview: [preview.codiquiz.com](https://preview.codiquiz.com)
+- Admin demo access: [admin.preview.codiquiz.com/admin/demo-access](https://admin.preview.codiquiz.com/admin/demo-access)
 - Demo/recruiter walkthrough: [Recruiter Demo Presentation Flow](docs/demo/RECRUITER_DEMO_PRESENTATION_FLOW.md)
 - Preview demo walkthrough: [Preview Demo Walkthrough](docs/demo/PREVIEW_DEMO_WALKTHROUGH.md)
 - Demo account boundaries: [Demo Account Boundaries](docs/demo/DEMO_ACCOUNT_BOUNDARIES.md)
@@ -377,10 +377,10 @@ See:
 
 Codiquiz uses an isolated deployment model. The current preview/demo environment is live separately from the future final production environment.
 
-- **Preview VPS** — public preview at `preview.codiquiz.com` and clean admin preview at `admin.preview.codiquiz.com`.
+- **Preview environment** — public preview at [preview.codiquiz.com](https://preview.codiquiz.com) and controlled admin demo access at [admin.preview.codiquiz.com/admin/demo-access](https://admin.preview.codiquiz.com/admin/demo-access).
 - **Future production VPS** — official public site at `codiquiz.com` / `www.codiquiz.com` and protected admin at `admin.codiquiz.com`.
 
-Preview and production must not share the same database, Redis instance, secrets, or OpenAI key. The public site and admin system are separated so the public quiz experience can remain clean while generation, review, automation, and admin tools stay protected.
+Preview and production are intentionally separated. Public learner traffic and admin tooling use separate deployment boundaries so the quiz experience stays clean while generation, review, automation, and admin workflows remain protected.
 
 See: [Deployment Model](docs/13-deployment-model.md)
 
