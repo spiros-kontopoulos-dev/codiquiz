@@ -1,9 +1,9 @@
 # Codiquiz: AI-Powered Coding Quiz Platform
 
 > **Status:** Early alpha.
-> Codiquiz is actively being built. The current version demonstrates the core architecture, admin workflows, AI generation pipeline, Batch API automation, Backend Quality Engine, Backend Intelligence Layer, Blueprint planning, and preview deployment foundation, while final production rollout, learner accounts, scoring, semantic similarity, and advanced learning features are still evolving.
+> Codiquiz is actively being built. The current version demonstrates the public practice experience, taxonomy-driven Python practice flows, admin AI generation pipeline, Batch API automation, Backend Quality Engine, Backend Intelligence Layer, Blueprint planning, model/cost management, and preview deployment foundation, while final production rollout, learner accounts, scoring, semantic similarity, and advanced learning features are still evolving.
 
-Codiquiz is an AI-assisted coding quiz platform for building deep, taxonomy-based question banks. It combines a public coding-practice experience with an admin platform for taxonomy management, AI question generation, draft review, duplicate/similarity control, concept-importance scoring, suitability-aware Blueprint planning, and Redis/Celery automation.
+Codiquiz is an AI-assisted coding quiz platform for building deep, taxonomy-based question banks. It combines public coding-practice flows such as Quick Practice, Custom Practice, and Try Concept with an admin platform for taxonomy management, AI question generation, draft review, duplicate/similarity control, concept-importance scoring, suitability-aware Blueprint planning, OpenAI model profile management, cost/quality analytics, and Redis/Celery automation.
 
 This is the public documentation, architecture, and code-examples repository for Codiquiz. The complete application source remains private because Codiquiz is an active online platform, while this repository provides public documentation, diagrams, demo/recruiter walkthroughs, and selected sanitized code excerpts for portfolio review.
 
@@ -78,8 +78,19 @@ Key ideas:
 
 ### Implemented
 
-- Public homepage, technology page, and quick-practice foundation.
-- Quiz/session-oriented practice foundation.
+- Public homepage and Python technology/taxonomy pages.
+- Public practice route family:
+  - `/practice`,
+  - `/practice/quick`,
+  - `/practice/custom`,
+  - `/practice/try-concept`.
+- Quick Practice for fast technology/domain/difficulty setup.
+- Custom Practice with taxonomy targeting down to topic, subtopic, and concept focus.
+- Try Concept mode for concept-level practice with style selection and lightweight feedback.
+- Concept Finder with search, taxonomy paths, pagination, and approved-question count metadata.
+- Taxonomy page links that prefill custom practice or direct users into Try Concept.
+- Practice session UI polish: compact timer/stat row, A/B/C/D answers, stop-session modal, navigation guards, and quiz-style review.
+- Public quiz technology support, including technology ownership, public technology filtering, technology badges/icons, promoted quiz cards, and coming-soon quiz flags.
 - Admin taxonomy and question-bank management.
 - AI generation planner and draft review workflow.
 - Normal OpenAI generation mode.
@@ -97,38 +108,44 @@ Key ideas:
 - Suitability-aware generation planning foundation.
 - Blueprint default target generation from importance + suitability.
 - Blueprint coverage, work queues, and generation candidate admin views.
+- Admin AI model profile visibility, including provider/model/profile metadata.
+- Editable AI model profile mappings backed by database configuration.
+- OpenAI model pricing catalog with input/output and Batch API cost visibility.
+- AI generation Cost & Quality dashboard with approval, rejection, duplicate-warning, profile/model, and cost metrics.
+- `tiktoken`-based pre-generation token/cost estimates while keeping actual costs based on provider usage.
 - Redis/Celery worker foundation.
 - Celery Beat scheduled automation.
 - Batch API lifecycle scanner automation.
 - Worker task-run history in admin settings.
+- Public and admin smoke-test coverage for the recent public/practice/admin pages.
 
 ### In progress / near term
 
-- Polish the live preview/demo showcase flow.
+- Polish the live preview/demo showcase flow with updated screenshots and short walkthroughs.
 - Deploy the final production site to `codiquiz.com` on a separate VPS.
 - Keep the protected admin preview/demo environment isolated from final production.
 - Add pgvector embeddings and semantic similarity warnings.
 - Add Blueprint-driven automatic generation batches.
 - Add registered learner accounts, persistent attempt history, scoring, and mastery tracking.
 
----
-
 ## Product areas
 
 ### Public practice experience
 
-Codiquiz is designed around deep coding-practice question banks. The public side focuses on helping users practice technologies such as Python through structured multiple-choice coding questions.
+Codiquiz is designed around deep coding-practice question banks. The public side helps users practice technologies such as Python through structured multiple-choice coding questions backed by a taxonomy-aware question bank.
 
-Planned and current public features:
+Current public features include:
 
-- Public homepage.
-- Technology pages such as Python.
-- Quick practice flow.
-- Taxonomy-based question filtering.
-- Multiple-choice coding questions.
-- Future custom practice builder.
-- Future adaptive practice based on weak concepts and user history.
+- Practice landing page at `/practice`.
+- Quick Practice for fast sessions using technology, domain, and difficulty filters.
+- Custom Practice for deeper taxonomy targeting down to module, topic, subtopic, and concept focus.
+- Try Concept mode for trying questions from one selected concept.
+- Concept Finder with search, taxonomy paths, pagination, and approved-question counts.
+- Taxonomy page practice links that prefill Custom Practice or start Try Concept from a selected concept.
+- Practice sessions with answer labels, compact progress/timer display, stop-session confirmation, navigation protection, answer feedback, and result review.
+- Public quiz list with technology filtering, promoted quiz cards, coming-soon states, and technology badges/icons.
 
+Future public features will add registered progress, adaptive practice, mastery tracking, and stronger question selection based on user history.
 
 ### User accounts and progress system
 
@@ -154,12 +171,17 @@ Admin capabilities include:
 
 - Taxonomy management.
 - Question-bank management.
+- Quiz technology/promoted/coming-soon configuration.
 - Question type mapping.
 - Suitability rule management.
 - Blueprint coverage and audit pages.
 - AI generation planner.
 - AI draft review inbox.
 - Batch API lifecycle detail pages.
+- AI model profile visibility and editable profile-to-model mappings.
+- OpenAI pricing catalog and profile cost comparison.
+- Cost & Quality dashboard for generation outcomes, approval rates, duplicate-warning rates, and cost per approved question.
+- `tiktoken`-based pre-generation cost estimates before spending provider credits.
 - Redis/Celery readiness display.
 - Worker task-run history.
 
@@ -235,9 +257,11 @@ Prepare request jobs
 
 Generated questions are not published directly. They become staged drafts first. The backend parses and normalizes the provider output, separates question text from code snippets, applies prompt rules and format normalization, computes signatures/fingerprints, checks duplicate and repetition policies, and only then exposes drafts for admin review.
 
-See: [AI Generation Workflow](docs/04-ai-generation-workflow.md)
+The generation system is also cost-aware. Admins can inspect and edit model profiles such as budget, balanced, premium/advanced, and validation-only profiles. Each profile resolves to a configured OpenAI model, and the settings UI shows model pricing, Batch API pricing, and relative cost comparisons. Before running generation, Codiquiz estimates token usage with `tiktoken`; after generation, actual cost tracking uses provider-returned token usage.
 
----
+The Cost & Quality dashboard summarizes generation outcomes across batches, including generated drafts, approvals, rejections, pending review, duplicate warnings, tracked cost, cost per generated draft, cost per approved question, and profile/model performance.
+
+See: [AI Generation Workflow](docs/04-ai-generation-workflow.md)
 
 ## Backend Quality Engine
 
@@ -366,10 +390,10 @@ See: [Deployment Model](docs/13-deployment-model.md)
 
 Near term:
 
-- Polish the live preview/demo showcase flow.
-- Update public README/docs with the Backend Intelligence Layer.
+- Polish the live preview/demo showcase flow with updated screenshots and walkthroughs.
 - Deploy final production to `codiquiz.com` on a separate VPS.
 - Add screenshots and architecture diagrams.
+- Keep public documentation synced with major product and admin-system milestones.
 
 Next:
 
@@ -389,8 +413,6 @@ Later:
 - Observability stack.
 
 See: [Roadmap](docs/14-roadmap.md)
-
----
 
 ## Engineering highlights
 

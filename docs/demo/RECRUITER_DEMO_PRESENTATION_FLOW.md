@@ -8,9 +8,9 @@ Codiquiz is an AI-powered coding quiz platform with a backend intelligence layer
 
 ## 30-second opening
 
-Codiquiz is built as a portfolio-level engineering project. It combines a public coding-practice product with a protected admin platform for taxonomy management, AI question generation, draft review, duplicate control, Blueprint coverage planning, suitability scoring, async automation, and deployment operations.
+Codiquiz is built as a portfolio-level engineering project. It combines a public coding-practice product with a protected admin platform for taxonomy management, AI question generation, draft review, duplicate control, Blueprint coverage planning, suitability scoring, model/cost management, async automation, and deployment operations.
 
-The important point is that Codiquiz does not publish AI output directly. It uses a controlled backend workflow: generate, validate, fingerprint, stage, review, approve, and only then serve questions.
+The important point is that Codiquiz does not publish AI output directly. It uses a controlled backend workflow: plan, generate, validate, fingerprint, stage, review, approve, measure cost/quality, and only then serve questions.
 
 ## Recommended demo order
 
@@ -22,13 +22,22 @@ Talking point:
 
 > The public side is intentionally clean. The complexity is hidden in the admin/backend systems that build and protect the question bank.
 
-### 2. Python technology/taxonomy page
+### 2. Public practice and taxonomy flow
 
-Show the taxonomy depth: technology, domain, module, topic, subtopic, and concept.
+Show the Python technology/taxonomy page, then show how users can move into practice.
+
+Recommended path:
+
+1. Python technology page.
+2. Taxonomy depth: domain → module → topic → subtopic → concept.
+3. Quick Practice.
+4. Custom Practice with taxonomy prefill.
+5. Try Concept or Concept Finder.
+6. Public quiz list with technology filtering.
 
 Talking point:
 
-> The project is built around structured learning coverage, not random questions.
+> The public side is not just random quizzes. Practice can start broad or narrow down to one Python concept, while the admin system controls what content is approved and available.
 
 ### 3. Admin login and dashboard
 
@@ -78,13 +87,13 @@ Talking point:
 
 > The backend protects the approved bank from repeated or near-identical generated questions.
 
-### 9. Batch/async automation
+### 9. Batch/async automation and model/cost controls
 
-Show Batch API readiness, lifecycle status, worker task history, or automation settings.
+Show Batch API readiness, lifecycle status, worker task history, automation settings, model profile settings, or Cost & Quality if available.
 
 Talking point:
 
-> Redis/Celery and scheduled workers support long-running generation and background lifecycle work.
+> Redis/Celery and scheduled workers support long-running generation and background lifecycle work. The admin can also inspect model profiles, edit profile-to-model mappings, compare model pricing, estimate generation cost before running, and review cost/quality outcomes after generation.
 
 ### 10. Deployment/security foundation
 
@@ -106,6 +115,11 @@ Talking point:
 - Deterministic duplicate/fingerprint system.
 - Blueprint coverage planning.
 - Concept importance and suitability scoring.
+- Public Quick Practice, Custom Practice, Try Concept, and Concept Finder flows.
+- Public quiz technology filtering and promoted/coming-soon quiz controls.
+- Editable AI model profile mappings.
+- OpenAI model pricing catalog and `tiktoken` pre-generation estimates.
+- Cost & Quality dashboard for generation outcomes.
 - Preview deployment with HTTPS, backups, smoke tests, and restricted demo user.
 
 ## What to avoid showing

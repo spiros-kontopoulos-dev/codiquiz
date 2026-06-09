@@ -237,24 +237,51 @@ Admin actions:
 
 Approved drafts become real question-bank entries. The approved question bank is treated as the source of truth for future duplicate checks and serving.
 
-## Cost and execution metadata
+## Model profiles, pricing, and cost metadata
 
-Codiquiz tracks execution metadata so AI generation can become cost-aware.
+Codiquiz treats model selection as an admin-facing profile system instead of scattering raw provider model names throughout the UI.
 
-Useful metadata includes:
+Typical profile roles include:
+
+- **Budget Draft** — low-cost generation for broad coverage expansion.
+- **Balanced Draft** — a middle option for everyday generation quality.
+- **Premium / Advanced** — stronger model choice for harder or more important generation targets.
+- **Validation Only** — lower-cost validation/review support where applicable.
+
+Each profile stores a stable Codiquiz key, while the configured provider/model can be changed from admin settings. This allows the platform to keep historical metadata stable while still allowing model upgrades over time.
+
+The admin settings layer exposes:
+
+- provider,
+- configured model,
+- profile purpose,
+- enabled status,
+- Normal API compatibility,
+- Batch API compatibility,
+- input cost per 1M tokens,
+- output cost per 1M tokens,
+- Batch API input/output costs,
+- relative cost comparison against the lowest-cost model in the catalog.
+
+Generation batches and drafts track useful metadata such as:
 
 - execution mode,
 - model profile,
-- provider model,
-- prompt tokens,
-- completion tokens,
+- resolved provider model,
+- prompt/input tokens,
+- completion/output tokens,
 - total tokens,
-- estimated/actual cost,
+- estimated cost,
+- actual cost when provider usage data is available,
 - number of request jobs,
 - number of successful provider result lines,
 - number of failed/unmatched lines,
 - number of drafts created,
-- cost per approved question later.
+- review outcomes such as approved/rejected/pending.
+
+Before a run, Codiquiz estimates token usage and cost with `tiktoken` and the configured model pricing. After a run, actual cost accounting should prefer provider-returned usage tokens.
+
+The Cost & Quality dashboard uses this metadata to summarize approval rate, rejection rate, duplicate-warning rate, total tracked cost, cost per generated draft, cost per approved question, and performance by profile/provider/model.
 
 ## Chunking, retries, and variation control
 

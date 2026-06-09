@@ -1,33 +1,42 @@
 # Roadmap
 
-Codiquiz is in early alpha. This roadmap separates what is implemented, what is near-term, and what belongs to later platform expansion.
+Codiquiz is in early alpha. The current foundation already demonstrates the public practice experience, admin AI generation workflows, quality controls, Blueprint planning, cost/model management, async automation, and preview deployment. The roadmap below separates what is already implemented from the next platform layers.
 
 ## Implemented foundation
 
-- Public homepage / technology page / quick practice foundation.
-- Admin taxonomy and question-bank pages.
-- AI generation planner.
-- Normal OpenAI generation.
-- OpenAI Batch API lifecycle.
-- Draft staging and review workflow.
+- Public homepage and Python technology/taxonomy pages.
+- Quick Practice, Custom Practice, Try Concept, and Concept Finder.
+- Public quiz technology filtering, technology badges, promoted quiz cards, and coming-soon quiz states.
+- Admin taxonomy and question-bank foundations.
+- AI Generation Create and batch detail flows.
+- OpenAI normal API generation.
+- OpenAI Batch API prepare/submit/status/collect/reconcile lifecycle.
+- AI draft review and approval workflow.
 - Backend Quality Engine foundations.
-- Concept importance scoring and admin audit views.
-- Reviewed suitability-aware generation planning foundation.
-- Blueprint default target generation from importance + suitability.
-- Blueprint coverage/admin foundation with work queues and candidates.
+- Duplicate/fingerprint system and avoid-list support.
+- Concept importance system.
+- Question-type suitability mapping.
+- Difficulty suitability guidance.
+- Blueprint default target generation.
+- Blueprint coverage and generation candidate queues.
 - Redis/Celery worker foundation.
 - Celery Beat scheduler.
 - Batch API lifecycle automation scanner.
 - Worker task-run history in admin settings.
+- AI model profile visibility.
+- Editable profile-to-model mappings.
+- OpenAI model pricing catalog and relative cost comparison.
+- Cost & Quality dashboard for generation outcomes.
+- `tiktoken`-based pre-generation cost estimates.
+- Preview deployment foundation and smoke-test workflow.
 
 ## Near term
 
-- Polish the live preview/demo showcase flow.
+- Polish the live preview/demo showcase flow with screenshots and short demo notes.
 - Deploy final production site to `codiquiz.com`.
 - Keep preview/admin demo environment isolated from final production.
-- Add project screenshots.
-- Add architecture diagrams.
-- Improve public documentation repository and keep the Backend Intelligence Layer visible.
+- Add project screenshots and additional diagrams.
+- Keep public documentation synced with major product milestones.
 
 ## Next product/AI milestones
 

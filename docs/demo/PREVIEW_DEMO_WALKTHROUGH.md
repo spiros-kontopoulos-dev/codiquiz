@@ -30,13 +30,18 @@ Show:
 1. Homepage hero.
 2. Technology carousel or technology entry points.
 3. Python technology page.
-4. Taxonomy navigation: domain → module → topic → subtopic.
+4. Taxonomy navigation: domain → module → topic → subtopic → concept.
 5. Public routing refresh/share behavior.
+6. Practice landing page.
+7. Quick Practice.
+8. Custom Practice from a taxonomy path.
+9. Try Concept or Concept Finder.
+10. Public quiz list with technology filtering.
 
 Mention:
 
 ```text
-The current preview focuses on the platform foundation, taxonomy depth, admin workflows, and AI generation pipeline. Full learner accounts, scoring, and production launch are later milestones.
+The current preview focuses on the public practice experience, taxonomy depth, admin workflows, and AI generation pipeline. Full learner accounts, scoring, and final production launch are later milestones.
 ```
 
 ## 2. Admin separation
@@ -101,15 +106,24 @@ Avoid triggering expensive or unnecessary real OpenAI runs during casual demos u
 Show:
 
 1. Provider/model profile mapping.
-2. Batch API readiness.
-3. Worker/task history.
-4. Scheduler/automation status.
-5. Provider safety check.
+2. Editable profile-to-model settings.
+3. Model pricing catalog and relative cost comparison.
+4. Cost estimate before generation.
+5. Batch API readiness.
+6. Worker/task history.
+7. Scheduler/automation status.
+8. Provider safety check.
 
 Explain:
 
 ```text
-The platform supports normal API generation, Batch API workflows, retry/chunk tracking, worker automation, and provider safety checks. OpenAI keys are isolated to the generation services.
+The platform supports normal API generation, Batch API workflows, retry/chunk tracking, worker automation, and provider safety checks. Model choices are managed through admin-readable profiles, and the system can estimate costs before generation while tracking actual usage after generation.
+```
+
+If useful, show the Cost & Quality dashboard:
+
+```text
+This dashboard summarizes generated drafts, approvals, rejections, pending review, duplicate warnings, cost per generated question, cost per approved question, and performance by model/profile.
 ```
 
 ## 6. Generated questions / review quality
@@ -132,7 +146,7 @@ Generated content is staged and reviewed before entering the approved question b
 Say clearly:
 
 ```text
-This is an early-alpha preview. The core architecture and admin AI-generation systems are live, but full public learner accounts, scoring, production deployment, and long-term learning features are future work.
+This is an early-alpha preview. The public practice flows, taxonomy-driven question experience, admin AI-generation systems, cost/model controls, and preview deployment foundation are live, but full learner accounts, scoring, final production deployment, and long-term learning features are future work.
 ```
 
 ## Demo do-not-do list

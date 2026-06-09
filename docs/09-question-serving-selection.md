@@ -21,39 +21,36 @@ The engine should:
 
 ### Fixed/prepared session
 
-The backend selects exactly N questions before the session starts.
+A fixed session selects questions up front, stores the session shape, and then serves from that prepared list.
 
-Best for:
+This is useful for:
 
-- normal quizzes,
-- timed attempts,
-- fair scoring,
-- fixed practice sessions.
+- static quizzes,
+- quick practice sessions,
+- custom practice sessions,
+- repeatable review.
+
+### Quick Practice
+
+Quick Practice is the fastest public entry point. It focuses on a small set of choices such as technology, domains, difficulty, and session settings, then starts a practice session without making the user navigate the full taxonomy.
+
+### Custom Practice
+
+Custom Practice is the deeper targeting flow. It can start from a taxonomy page or from the practice landing page, then narrow by technology, domain, module, topic, subtopic, and concept focus.
+
+### Try Concept
+
+Try Concept is a lightweight concept-level flow. A user can open it directly from a technology/taxonomy concept row or search with Concept Finder. The selected concept can show approved-question availability and style choices before serving a single focused question with feedback.
+
+### Public quizzes
+
+Public quiz cards can be filtered by technology and can be promoted or marked coming soon. Quizzes are more curated and fixed than practice sessions.
 
 ### Rolling pool endless mode
 
-The backend prepares a buffer of questions, serves from it, and refills when low.
+A rolling pool keeps selecting new questions while the user continues. It should avoid recently seen questions, balance difficulty, and adapt to user performance.
 
-Best for:
-
-- quick drill mode,
-- browsing/crawling mode,
-- adaptive practice.
-
-Important correction:
-
-> Dynamic serving does not mean recalculating one question from scratch every few seconds.
-
-Even endless mode should use a rolling pool to avoid repeated heavy policy calculations.
-
-Example:
-
-```text
-User starts Python → Lists → Slicing quick practice
-Backend prepares 50 suitable questions
-User clicks Next from the local/session pool
-When 40-45 are consumed, backend refills another 40-50
-```
+This is a future-serving style.
 
 ## Selection policies
 
@@ -77,19 +74,23 @@ The engine can consider:
 
 ### Static quiz
 
-Uses curated question IDs assigned to a quiz.
+A curated quiz with a fixed question set or fixed selection rules. Public quiz cards now carry technology metadata so the list can be filtered by technology.
 
-### Normal practice session
+### Quick Practice
 
-Builds a fixed question set at session start from selected filters.
+A fast public practice mode for users who want to start quickly with minimal configuration.
 
-### Quick drill / crawl mode
+### Custom Practice
 
-Uses a rolling pool from selected taxonomy path/search.
+A deeper public practice mode for users who want to choose taxonomy targets such as module, topic, subtopic, or concept.
+
+### Try Concept
+
+A lightweight concept-focused mode for trying one concept at a time. Concept Finder and technology pages can route users into this mode.
 
 ### Adaptive learning mode
 
-Uses block-based pool refills based on recent answers and mastery.
+A future registered-user mode that uses attempts, mastery, and seen-question history to choose the next best question.
 
 ## Service boundary
 

@@ -1,6 +1,6 @@
 # Portfolio and Engineering Highlights
 
-Codiquiz is designed to demonstrate serious backend, AI engineering, and full-stack product architecture.
+Codiquiz is designed to demonstrate serious backend, AI engineering, full-stack product architecture, and operational ownership.
 
 ## Backend engineering
 
@@ -8,7 +8,7 @@ Codiquiz is designed to demonstrate serious backend, AI engineering, and full-st
 - SQLAlchemy data model.
 - Alembic migrations.
 - PostgreSQL source of truth.
-- Admin APIs for taxonomy, generation, review, and automation.
+- Admin APIs for taxonomy, quizzes, generation, review, cost/quality, and automation.
 - Clear service boundaries between product API and provider/prompt service.
 
 ## AI engineering
@@ -18,7 +18,11 @@ Codiquiz is designed to demonstrate serious backend, AI engineering, and full-st
 - Structured question generation.
 - Prompt rules and output normalization.
 - Draft staging before publication.
-- Cost/execution metadata tracking.
+- Editable model profile mapping from admin settings.
+- OpenAI model pricing catalog and relative cost comparison.
+- `tiktoken`-based pre-generation cost estimates.
+- Actual cost tracking from provider usage metadata.
+- Cost & Quality dashboard for generation outcomes.
 - Avoid-list support for overused patterns.
 - Future embeddings and pgvector semantic search.
 
@@ -54,22 +58,34 @@ Codiquiz is designed to demonstrate serious backend, AI engineering, and full-st
 - Worker task-run history.
 - Future embedding/backfill jobs.
 
+## Frontend/public engineering
+
+- React + TypeScript public UI.
+- Practice landing page.
+- Quick Practice flow.
+- Custom Practice with taxonomy targeting.
+- Try Concept mode and Concept Finder.
+- Public quiz technology filtering.
+- Promoted and coming-soon quiz cards.
+- Practice session UI with feedback, navigation protection, and review.
+
 ## Frontend/admin engineering
 
-- React + TypeScript public/admin UI.
+- React + TypeScript admin UI.
 - Admin generation planner.
 - AI draft review UI.
 - Batch API lifecycle detail page.
-- Settings/readiness pages.
+- AI Generation Settings with model profiles, pricing, and automation status.
+- Cost & Quality dashboard.
 - Worker history pagination.
 - Practical admin queue-card/focused-content patterns.
 
 ## User and learning systems
 
+- Anonymous practice modes.
 - Future registered learner accounts.
-- Anonymous and registered practice modes.
-- Persistent attempt history.
-- Seen-question tracking.
+- Persistent attempt history direction.
+- Seen-question tracking direction.
 - Ranking score direction.
 - Concept mastery profiles.
 - Personalized/adaptive practice direction.
@@ -85,4 +101,4 @@ Codiquiz is designed to demonstrate serious backend, AI engineering, and full-st
 
 ## Strong summary
 
-Codiquiz demonstrates more than AI question generation. It combines structured taxonomy design, AI draft staging, duplicate/similarity evaluation, a Backend Intelligence Layer for deciding what should be generated next, Blueprint coverage planning, suitability scoring, Redis/Celery automation, future user progress, and adaptive serving/scoring systems into one coherent coding-practice platform.
+Codiquiz demonstrates more than AI question generation. It combines structured taxonomy design, public practice flows, AI draft staging, duplicate/similarity evaluation, a Backend Intelligence Layer for deciding what should be generated next, Blueprint coverage planning, suitability scoring, editable model/cost management, Redis/Celery automation, preview deployment, and future adaptive serving/scoring systems into one coherent coding-practice platform.
