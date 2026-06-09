@@ -1,5 +1,5 @@
-# Security Policy
+## Security and access boundaries
 
-This repository is documentation-only and should not contain secrets, source-code credentials, database dumps, private keys, `.env` files, or production backup files.
+Codiquiz keeps public practice features separate from protected admin workflows. AI generation, model settings, review tools, cost analytics, and moderation features require authenticated admin access.
 
-If a secret is accidentally committed, rotate it immediately in the private application environment and remove it from Git history before publishing further.
+This public repository documents the product and architecture without exposing secrets, environment values, private infrastructure details, or operational credentials.
