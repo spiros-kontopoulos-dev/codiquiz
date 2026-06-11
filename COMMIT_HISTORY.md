@@ -2,9 +2,180 @@
 
 Repository: ai-quiz-platform
 Branch: main
-Generated: 2026-06-10 00:52:37 +03:00
-Total commits: 417
-Latest commit: `660f6d2`
+Generated: 2026-06-11 18:48:53 +03:00
+Total commits: 430
+Latest commit: `6b2cf79`
+
+## 2026-06-11 - `6b2cf79`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `6b2cf79a1e6827404490aa53ea51cd3bcb2d5419`
+
+Split AI generation create mode and stepper components
+
+- Extract the generation mode selection card from the large create page
+- Extract the builder stepper into a focused component
+- Keep mode switching, preview reset behavior, and page state unchanged
+- Continue reducing the large AI generation create page through safe UI-only refactors
+
+## 2026-06-11 - `44a6005`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `44a6005e8c671a0fef7dda7d32de99e39a961db7`
+
+Split AI generation create page shell components
+
+- Extract the AI generation create page header into a focused component
+- Extract the demo planning access card into a reusable component
+- Extract the AI generation guide modal from the large page file
+- Keep state, handlers, API calls, and behavior unchanged for a safe refactor
+
+## 2026-06-11 - `e77b327`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `e77b32799132f56401dab5c7a1fd83cf4266660a`
+
+Split public CSS into focused sections
+
+- Replace the huge public.css import with a public CSS entrypoint
+- Split public styles into focused folders for common, layout, home, technology, quiz, and page sections
+- Preserve the existing cascade order through public/index.css imports
+- Keep a small compatibility shim for the old public.css path
+- Fix CSS split boundaries so the production build passes
+
+## 2026-06-11 - `0ed20a4`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `0ed20a4be4b3688f03ce0196524a16fbd0884d0b`
+
+Clean up frontend CSS import inventory
+
+- Keep admin CSS loading through a single admin.css entrypoint
+- Move admin auth styling into the active admin CSS import chain
+- Remove duplicate orphan admin auth stylesheet files
+- Document the current frontend CSS import map before larger stylesheet refactors
+
+## 2026-06-11 - `b7a645d`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `b7a645d6a62a2912b9bfcac2feb8b567726d682b`
+
+Add safe AI generation batch hard delete
+
+- Add password-confirmed hard delete for AI generation batches
+- Use selected-batch delete flow alongside archive selected
+- Hide delete controls from demo viewers while keeping backend authorization checks
+- Block unsafe deletes for approved or active generation batches
+- Polish the delete confirmation modal with compact status rows and reusable icons
+
+## 2026-06-11 - `d736f61`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `d736f61014bdd7bbdde084ae5af8bcafeda1fb49`
+
+Polish demo credential login flow
+
+- Copy only username and temporary password from generated demo credentials
+- Add short readable demo passwords with mixed letters and digits
+- Prefill demo credentials on the admin login page using a temporary browser-side handoff
+- Add demo access entry point on the login page and clean up related button styling
+
+## 2026-06-11 - `8d352de`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `8d352de9eed8378e40dea930eda0535a34cbb048`
+
+Improve demo access request and status flow
+
+- Split demo access request details into name, email, company, and role fields
+- Allow limited unused credential regeneration before first login
+- Clarify temporary demo access statuses for unused, active, and expired credentials
+- Improve demo access layout, credential guidance, and login password toggle styling
+
+## 2026-06-11 - `5c289ad`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `5c289ad2908bf48a2e7cb1e0ef39b7b716e5e833`
+
+Improve demo access request flow
+
+- Split demo access request details into name, email, company, and role fields
+- Allow limited unused credential regeneration before first login
+- Add clearer credential-saving guidance and admin visibility details
+- Improve demo access layout and login password visibility controls
+
+## 2026-06-11 - `bb26106`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `bb26106b9f35630272cefbcfe3bb3de75874273d`
+
+Add safe admin user delete
+
+- Add owner-only permanent delete for admin users with password confirmation
+- Block self-deletion and last-owner deletion
+- Show inline delete-modal errors for failed password confirmation
+- Improve password visibility toggle styling with transparent SVG controls
+
+## 2026-06-11 - `b3e9fba`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `b3e9fbaa0010df301cee05c454256a1a62dfcbdb`
+
+Allow demo users to preview AI generation planning
+
+- Let demo users access the AI generation create-batch planning UI
+- Keep real batch creation disabled for demo accounts
+- Preserve normal plan preview behavior without demo-only question caps
+- Clarify demo access as preview-only planning access
+
+## 2026-06-11 - `dc1e01b`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `dc1e01bd12aee35e9eb8d012c68b8ac56a4823bd`
+
+Clarify AI generation guide and blueprint scope
+
+- Add a guide modal explaining Normal mode, Reverse mode, Blueprint Assist, and draft review
+- Show the current applied taxonomy scope in Blueprint Assist
+- Clarify that Blueprint Assist uses the last applied scope
+- Rename the Blueprint action to load candidates for the current scope
+
+## 2026-06-10 - `2ec336a`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `2ec336a1f3b9544d9a96ce187f23e6413f7178d2`
+
+Add backend Pytest coverage
+
+- Add quiz-api Pytest configuration and test structure
+- Cover backend domain helpers for similarity, blueprint priority, validation, and token estimates
+- Add tests for answer serving, practice helpers, AI generation planning, execution, schemas, security, and worker helpers
+- Add pytest/httpx dependencies for repeatable backend test runs
+
+## 2026-06-10 - `dc11035`
+
+**Author:** Spiros Kontopoulos
+
+**Full commit:** `dc11035d9ab110310a09d49ed8aca4ad4546000d`
+
+Add backend Pytest foundation
+
+- Add quiz-api Pytest configuration and test structure
+- Cover health endpoint and backend domain helpers
+- Test similarity signatures, blueprint priority, token estimates, and rule validation
+- Add pytest/httpx dependencies for repeatable backend test runs
 
 ## 2026-06-09 - `660f6d2`
 
